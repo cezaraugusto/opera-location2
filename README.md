@@ -10,7 +10,7 @@
 # opera-location2 [![Version][npm-version-image]][npm-version-url] [![Downloads][npm-downloads-image]][npm-downloads-url] [![workflow][action-image]][action-url]
 
 <img alt="Opera" align="right" src="https://cdn.jsdelivr.net/gh/extension-js/media@9ef31f005a0192907d9f6405838e43776aca2124/browser_logos/svg/opera.svg" width="10.5%" />
-
+  
 * By default checks only `stable`. Optionally can cascade to `beta` / `developer`.
 * Supports macOS / Windows / Linux
 * Works both as an ES module or CommonJS
