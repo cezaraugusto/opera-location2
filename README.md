@@ -123,6 +123,11 @@ Returns the first existing path found (given selected channels), or <code>null</
 
 ```js
 import operaLocation from "opera-location2";
+import {
+  locateOperaOrExplain,
+  getInstallGuidance,
+  getOperaVersion
+} from "opera-location2";
 
 // Strict (Stable only)
 console.log(operaLocation());
@@ -131,6 +136,21 @@ console.log(operaLocation());
 // Enable fallback (Stable / Beta / Developer)
 console.log(operaLocation(true));
 // => first found among Stable/Beta/Developer or null
+
+// Throw with a friendly guide when not found
+try {
+  const bin = locateOperaOrExplain({allowFallback: true});
+  console.log(bin);
+
+  // Cross-platform version (no exec by default)
+  console.log(getOperaVersion(bin)); // e.g. "114.0.5282.233" or null
+
+  // Opt-in: allow executing the binary (Linux/other)
+  console.log(getOperaVersion(bin, {allowExec: true}));
+} catch (e) {
+  console.error(String(e));
+  // Or print getInstallGuidance() explicitly
+}
 ```
 
 **Via CLI:**
@@ -141,7 +161,30 @@ npx opera-location2
 
 npx opera-location2 --fallback
 # Enable cascade (Stable / Beta / Developer)
+
+# Respect environment overrides
+OPERA_BINARY=/custom/path/to/opera npx opera-location2
+
+# Print browser version (empty + exit code 2 if unavailable)
+npx opera-location2 --opera-version
+npx opera-location2 --browser-version
+
+# Opt-in: allow executing the binary to fetch version
+npx opera-location2 --browser-version --allow-exec
 ```
+
+### Environment overrides
+
+If this environment variable is set and points to an existing binary, it takes precedence:
+
+- `OPERA_BINARY`
+
+## API
+
+- `default export locateOpera(allowFallback?: boolean): string | null`
+- `locateOperaOrExplain(options?: boolean | { allowFallback?: boolean }): string`
+- `getOperaVersion(bin: string, opts?: { allowExec?: boolean }): string | null`
+- `getInstallGuidance(): string`
 
 ## Related projects
 
@@ -150,7 +193,7 @@ npx opera-location2 --fallback
 * [edge-location](https://github.com/cezaraugusto/edge-location)
 * [firefox-location2](https://github.com/cezaraugusto/firefox-location2)
 * [vivaldi-location2](https://github.com/cezaraugusto/vivaldi-location2)
-* [yandex-location](https://github.com/cezaraugusto/yandex-location2)
+* [yandex-location](https://github.com/cezaraugusto/yandex-location)
 * [librewolf-location](https://github.com/cezaraugusto/librewolf-location)
 * [waterfox-location](https://github.com/cezaraugusto/waterfox-location)
 
