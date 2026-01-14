@@ -5,7 +5,7 @@
     "url": "https://github.com/cezaraugusto/opera-location2.git"
   },
   "name": "opera-location2",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Approximates the current location of the Opera browser across platforms.",
   "homepage": "https://www.npmjs.com/package/opera-location2",
   "type": "module",
