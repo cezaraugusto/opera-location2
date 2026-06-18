@@ -3,6 +3,7 @@
     "lib": ["ES2021"],
     "module": "ESNext",
     "types": ["node"],
+    "rootDir": "./src",
     "noEmit": true,
     "strict": true,
     "skipLibCheck": true,
