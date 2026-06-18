@@ -8,7 +8,7 @@ describe('opera-location2 fallbacks', () => {
     vi.resetModules()
   })
 
-  test('macOS: strict null, fallback finds Beta', async () => {
+  it('macOS: strict null, fallback finds Beta', async () => {
     const scanOsxPath = (await import('../src/scan-osx-path')).default as any
     const strict = scanOsxPath(false, {
       fs: {existsSync: (p: string) => p.includes('Opera Beta.app')},
@@ -26,7 +26,7 @@ describe('opera-location2 fallbacks', () => {
     ).toBe(true)
   })
 
-  test('Windows: strict null, fallback finds Developer', async () => {
+  it('Windows: strict null, fallback finds Developer', async () => {
     const scanWindowsPath = (await import('../src/scan-windows-path'))
       .default as any
 
@@ -54,7 +54,7 @@ describe('opera-location2 fallbacks', () => {
     ).toBe(true)
   })
 
-  test('Linux/other: strict only stable; fallback tries beta/developer', async () => {
+  it('Linux/other: strict only stable; fallback tries beta/developer', async () => {
     const scanUnknown = (await import('../src/scan-unknown-platform-path'))
       .default as any
 
