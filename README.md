@@ -143,7 +143,7 @@ console.log(operaLocation())
 console.log(operaLocation(true))
 // => first found among Stable/Beta/Developer or null
 
-// Throw with a friendly guide when not found
+// Throw with an install guide when not found
 try {
   const bin = locateOperaOrExplain({allowFallback: true})
   console.log(bin)
