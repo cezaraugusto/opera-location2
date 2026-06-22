@@ -10,10 +10,16 @@
 # opera-location2 [![Version][npm-version-image]][npm-version-url] [![Downloads][npm-downloads-image]][npm-downloads-url] [![workflow][action-image]][action-url]
 
 <img alt="Opera" align="right" src="https://cdn.jsdelivr.net/gh/extension-js/media@9ef31f005a0192907d9f6405838e43776aca2124/browser_logos/svg/opera.svg" width="10.5%" />
-  
-* By default checks only `stable`. Optionally can cascade to `beta` / `developer`.
-* Supports macOS / Windows / Linux
-* Works both as an ES module or CommonJS
+
+- By default checks only `stable`. Optionally can cascade to `beta` / `developer`.
+- Supports macOS / Windows / Linux
+- Works both as an ES module or CommonJS
+
+## Installation
+
+```bash
+npm i opera-location2
+```
 
 ## Support table
 
@@ -122,35 +128,42 @@ Returns the first existing path found (given selected channels), or <code>null</
 **Via Node.js (strict by default):**
 
 ```js
-import operaLocation from "opera-location2";
+import operaLocation from 'opera-location2'
 import {
   locateOperaOrExplain,
   getInstallGuidance,
   getOperaVersion
-} from "opera-location2";
+} from 'opera-location2'
 
 // Strict (Stable only)
-console.log(operaLocation());
+console.log(operaLocation())
 // => "/Applications/Opera.app/Contents/MacOS/Opera" or null
 
 // Enable fallback (Stable / Beta / Developer)
-console.log(operaLocation(true));
+console.log(operaLocation(true))
 // => first found among Stable/Beta/Developer or null
 
 // Throw with a friendly guide when not found
 try {
-  const bin = locateOperaOrExplain({allowFallback: true});
-  console.log(bin);
+  const bin = locateOperaOrExplain({allowFallback: true})
+  console.log(bin)
 
   // Cross-platform version (no exec by default)
-  console.log(getOperaVersion(bin)); // e.g. "114.0.5282.233" or null
+  console.log(getOperaVersion(bin)) // e.g. "114.0.5282.233" or null
 
   // Opt-in: allow executing the binary (Linux/other)
-  console.log(getOperaVersion(bin, {allowExec: true}));
+  console.log(getOperaVersion(bin, {allowExec: true}))
 } catch (e) {
-  console.error(String(e));
+  console.error(String(e))
   // Or print getInstallGuidance() explicitly
 }
+```
+
+**CommonJS:**
+
+```js
+const api = require('opera-location2')
+const locateOpera = api.default || api
 ```
 
 **Via CLI:**
@@ -188,14 +201,16 @@ If this environment variable is set and points to an existing binary, it takes p
 
 ## Related projects
 
-* [brave-location](https://github.com/cezaraugusto/brave-location)
-* [chrome-location2](https://github.com/cezaraugusto/chrome-location2)
-* [edge-location](https://github.com/cezaraugusto/edge-location)
-* [firefox-location2](https://github.com/cezaraugusto/firefox-location2)
-* [vivaldi-location2](https://github.com/cezaraugusto/vivaldi-location2)
-* [yandex-location](https://github.com/cezaraugusto/yandex-location)
-* [librewolf-location](https://github.com/cezaraugusto/librewolf-location)
-* [waterfox-location](https://github.com/cezaraugusto/waterfox-location)
+- [brave-location](https://github.com/cezaraugusto/brave-location)
+- [chrome-location2](https://github.com/cezaraugusto/chrome-location2)
+- [chromium-location](https://github.com/cezaraugusto/chromium-location)
+- [edge-location](https://github.com/cezaraugusto/edge-location)
+- [firefox-location2](https://github.com/cezaraugusto/firefox-location2)
+- [safari-location2](https://github.com/cezaraugusto/safari-location2)
+- [vivaldi-location2](https://github.com/cezaraugusto/vivaldi-location2)
+- [waterfox-location](https://github.com/cezaraugusto/waterfox-location)
+- [librewolf-location](https://github.com/cezaraugusto/librewolf-location)
+- [yandex-location](https://github.com/cezaraugusto/yandex-location)
 
 ## License
 
